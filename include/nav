@@ -1,0 +1,26 @@
+<nav>
+  <h1>Unavix developer resources</h1>
+  <details>
+    <summary>Menu</summary>
+    <section>
+      <h2>general</h2>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Roadmap</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Source code</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>documentation</h2>
+      <ul>
+        <li><a href="#">Tutorials</a></li>
+        <li><a href="#">API reference</a></li>
+        <li><a href="#">Installation procedure</a></li>
+        <li><a href="#">Style guide</a></li>
+        <li><a href="#">Engine internals</a></li>
+      </ul>
+    </section>
+  </details>
+</nav>

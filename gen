@@ -1,0 +1,47 @@
+#!/bin/sh
+
+NAME="Dev"
+CSS_REL_PATH=".././static/css/main.css"
+
+error()
+{
+    echo $1
+    exit 2
+}
+
+gen()
+{
+    f="./site/$(basename $1).html"
+    if [ -f "$f" ] ; then
+        rm "$f"
+    fi
+
+    title=`basename $1 | tr '-' ' '`
+    echo "<!DOCTYPE html>" >> $f
+    echo "<html lang='en'>" >> $f
+    echo "<head>" >> $f
+    echo "<meta charset='utf-8'>" >> $f
+    printf "<link rel='stylesheet' type='text/css' href='%s'>\n" $CSS_REL_PATH >> $f
+    printf "<title>%s</title>\n" "$NAME - $title" >> $f
+    echo "</head>" >> $f
+    echo "<body>" >> $f
+    printf "%s" "$(cat ./include/nav)" >> $f
+    echo "<main>" >> $f
+    printf "%s" "$(cat $1)" >> $f
+    echo "</main>" >> $f
+    printf "%s" "$(cat ./include/footer)" >> $f
+    echo "</body>" >> $f
+    echo "</html>" >> $f
+}
+
+if [ ! -d "./txt" ]; then
+    error "'txt' folder doesn't exit"
+fi
+
+if [ -z "$(ls -A './txt')" ]; then
+    error "'txt' folder needs to have files to parse"
+fi
+
+for file in "./txt/*"; do
+    gen $file
+done
